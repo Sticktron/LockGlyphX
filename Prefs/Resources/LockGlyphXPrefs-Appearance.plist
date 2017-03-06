@@ -157,7 +157,7 @@
 			<key>key</key>
 			<string>customFailColorEnabled</string>
 			<key>label</key>
-			<string>COLORS_USE_CUSTOM_FAILCOLOR</string>
+			<string>COLOURS_USE_CUSTOM_FAILCOLOR</string>
 			<key>PostNotification</key>
 			<string>com.evilgoldfish.lockglyphx.settingschanged</string>
 		</dict>
