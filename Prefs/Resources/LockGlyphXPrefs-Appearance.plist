@@ -144,6 +144,46 @@
 			<key>color_postNotification</key>
 			<string>com.evilgoldfish.lockglyphx.settingschanged</string>
 		</dict>
+		<!-- Use custom Fail Color -->
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>cellClass</key>
+			<string>LGXSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.evilgoldfish.lockglyphx</string>
+			<key>key</key>
+			<string>customFailColorEnabled</string>
+			<key>label</key>
+			<string>COLORS_USE_CUSTOM_FAILCOLOR</string>
+			<key>PostNotification</key>
+			<string>com.evilgoldfish.lockglyphx.settingschanged</string>
+		</dict>
+		<!-- Custom fail colour -->
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>cellClass</key>
+			<string>PFColorCell</string>
+			<key>label</key>
+			<string>COLOURS_FAILCOLOR_LABEL</string>
+			<key>color_defaults</key>
+			<string>com.evilgoldfish.lockglyphx</string>
+			<key>color_key</key>
+			<string>failColor</string>
+			<key>title</key>
+			<string>COLOURS_FAILCOLOR_LABEL</string>
+			<key>color_fallback</key>
+			<string>#FF0000</string>
+			<key>usesRGB</key>
+			<true/>
+			<key>usesAlpha</key>
+			<true/>
+			<key>color_postNotification</key>
+			<string>com.evilgoldfish.lockglyphx.settingschanged</string>
+		</dict>
 		<!-- Apply To Custom Glyphs -->
 		<dict>
 			<key>cell</key>
