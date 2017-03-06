@@ -720,13 +720,13 @@ static void performShakeFingerFailAnimation(void) {
                 DebugLog(@"TouchID: match failed");
                 if (customFailColorEnabled) {
                 	fingerglyph.secondaryColor = failColor;
+                	dispatch_after(dispatch_time( DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC ), dispatch_get_main_queue(), ^{
+   						fingerglyph.secondaryColor = activeSecondaryColor();
+					});
                 }
                	if (shakeOnIncorrectFinger) {
                     performShakeFingerFailAnimation();
                 }
-				dispatch_after(dispatch_time( DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC ), dispatch_get_main_queue(), ^{
-   					fingerglyph.secondaryColor = activeSecondaryColor();
-				});
                 if (vibrateOnIncorrectFinger && ![manager.lockScreenViewController isPasscodeLockVisible]) {
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 }
@@ -820,13 +820,13 @@ static void performShakeFingerFailAnimation(void) {
                 DebugLog(@"TouchID: match failed");
                 if (customFailColorEnabled) {
                 	fingerglyph.secondaryColor = failColor;
+                	dispatch_after(dispatch_time( DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC ), dispatch_get_main_queue(), ^{
+   						fingerglyph.secondaryColor = activeSecondaryColor();
+					});
                 }
                	if (shakeOnIncorrectFinger) {
                     performShakeFingerFailAnimation();
                 }
-				dispatch_after(dispatch_time( DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC ), dispatch_get_main_queue(), ^{
-   					fingerglyph.secondaryColor = activeSecondaryColor();
-				});
                 if (vibrateOnIncorrectFinger && ![manager.lockScreenViewController isPasscodeLockVisible]) {
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                 }
