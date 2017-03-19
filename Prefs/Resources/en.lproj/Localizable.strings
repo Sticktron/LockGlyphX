@@ -37,6 +37,8 @@
 "COLOURS_IDLECOLOUR_LABEL" = "Glyph colour";
 "COLOURS_IDLECOLOUR_OVERRIDE_LABEL" = "Apply to custom glyphs";
 "COLOURS_SCANCOLOUR_LABEL" = "Scanning colour";
+"COLOURS_USE_CUSTOM_FAILCOLOR" = "Use custom fail color";
+"COLOURS_FAILCOLOR_LABEL" = "Scan fail colour";
 
 "COLOURS_RESET_LABEL" = "Reset colours to default";
 "LOCKLABEL_HEADER_TEXT" = "Press Home To Unlock";
