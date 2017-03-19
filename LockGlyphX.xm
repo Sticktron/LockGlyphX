@@ -41,6 +41,7 @@
 
 #define kDefaultPrimaryColor 	[UIColor colorWithWhite:1 alpha:1]
 #define kDefaultSecondaryColor 	[UIColor colorWithWhite:0.8 alpha:1] //#cccccc
+#define kDefaultFailColor		[UIColor colorWithRed: 255.0/255.0 green: 0.0/255.0 blue: 0.0/255.0 alpha: 1.0]
 
 #define kDefaultYOffset 					90.0f
 #define kDefaultYOffsetWithLockLabelHidden 	64.0f
@@ -85,6 +86,8 @@ static BOOL useShine;
 static BOOL shouldNotDelay;
 static UIColor *primaryColor;
 static UIColor *secondaryColor;
+static BOOL customFailColorEnabled;
+static UIColor *failColor; 
 static BOOL enablePortraitY;
 static CGFloat portraitY;
 static BOOL enableLandscapeY;
@@ -169,6 +172,8 @@ static void loadPreferences() {
 	shouldNotDelay = !CFPreferencesCopyAppValue(CFSTR("shouldNotDelay"), kPrefsAppID) ? NO : [CFBridgingRelease(CFPreferencesCopyAppValue(CFSTR("shouldNotDelay"), kPrefsAppID)) boolValue];
 	primaryColor = !CFPreferencesCopyAppValue(CFSTR("primaryColor"), kPrefsAppID) ? kDefaultPrimaryColor : parseColorFromPreferences(CFBridgingRelease(CFPreferencesCopyAppValue(CFSTR("primaryColor"), kPrefsAppID)));
 	secondaryColor = !CFPreferencesCopyAppValue(CFSTR("secondaryColor"), kPrefsAppID) ? kDefaultSecondaryColor : parseColorFromPreferences(CFBridgingRelease(CFPreferencesCopyAppValue(CFSTR("secondaryColor"), kPrefsAppID)));
+	customFailColorEnabled = !CFPreferencesCopyAppValue(CFSTR("customFailColorEnabled"), kPrefsAppID) ? NO : [CFBridgingRelease(CFPreferencesCopyAppValue(CFSTR("customFailColorEnabled"), kPrefsAppID)) boolValue];
+	failColor = !CFPreferencesCopyAppValue(CFSTR("failColor"), kPrefsAppID) ? kDefaultFailColor : parseColorFromPreferences(CFBridgingRelease(CFPreferencesCopyAppValue(CFSTR("failColor"), kPrefsAppID)));
 	enablePortraitY = !CFPreferencesCopyAppValue(CFSTR("enablePortraitY"), kPrefsAppID) ? NO : [CFBridgingRelease(CFPreferencesCopyAppValue(CFSTR("enablePortraitY"), kPrefsAppID)) boolValue];
 	portraitY = !CFPreferencesCopyAppValue(CFSTR("portraitY"), kPrefsAppID) ? 0 : [CFBridgingRelease(CFPreferencesCopyAppValue(CFSTR("portraitY"), kPrefsAppID)) floatValue];
 	enableLandscapeY = !CFPreferencesCopyAppValue(CFSTR("enableLandscapeY"), kPrefsAppID) ? NO : [CFBridgingRelease(CFPreferencesCopyAppValue(CFSTR("enableLandscapeY"), kPrefsAppID)) boolValue];
@@ -713,7 +718,13 @@ static void performShakeFingerFailAnimation(void) {
             case kTouchIDDisabled:
                 canStartFingerDownAnimation = NO;
                 DebugLog(@"TouchID: match failed");
-                if (shakeOnIncorrectFinger) {
+                if (customFailColorEnabled) {
+                	fingerglyph.secondaryColor = failColor;
+                	dispatch_after(dispatch_time( DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC ), dispatch_get_main_queue(), ^{
+   						fingerglyph.secondaryColor = activeSecondaryColor();
+					});
+                }
+               	if (shakeOnIncorrectFinger) {
                     performShakeFingerFailAnimation();
                 }
                 if (vibrateOnIncorrectFinger && ![manager.lockScreenViewController isPasscodeLockVisible]) {
@@ -807,7 +818,13 @@ static void performShakeFingerFailAnimation(void) {
             case kTouchIDDisabled:
                 canStartFingerDownAnimation = NO;
                 DebugLog(@"TouchID: match failed");
-                if (shakeOnIncorrectFinger) {
+                if (customFailColorEnabled) {
+                	fingerglyph.secondaryColor = failColor;
+                	dispatch_after(dispatch_time( DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC ), dispatch_get_main_queue(), ^{
+   						fingerglyph.secondaryColor = activeSecondaryColor();
+					});
+                }
+               	if (shakeOnIncorrectFinger) {
                     performShakeFingerFailAnimation();
                 }
                 if (vibrateOnIncorrectFinger && ![manager.lockScreenViewController isPasscodeLockVisible]) {
