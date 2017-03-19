@@ -157,7 +157,7 @@
 			<key>key</key>
 			<string>customFailColorEnabled</string>
 			<key>label</key>
-			<string>COLOURS_USE_CUSTOM_FAILCOLOR</string>
+			<string>COLOURS_USE_CUSTOM_FAILCOLOUR</string>
 			<key>PostNotification</key>
 			<string>com.evilgoldfish.lockglyphx.settingschanged</string>
 		</dict>
@@ -168,13 +168,13 @@
 			<key>cellClass</key>
 			<string>PFColorCell</string>
 			<key>label</key>
-			<string>COLOURS_FAILCOLOR_LABEL</string>
+			<string>COLOURS_FAILCOLOUR_LABEL</string>
 			<key>color_defaults</key>
 			<string>com.evilgoldfish.lockglyphx</string>
 			<key>color_key</key>
 			<string>failColor</string>
 			<key>title</key>
-			<string>COLOURS_FAILCOLOR_LABEL</string>
+			<string>COLOURS_FAILCOLOUR_LABEL</string>
 			<key>color_fallback</key>
 			<string>#FF0000</string>
 			<key>usesRGB</key>
